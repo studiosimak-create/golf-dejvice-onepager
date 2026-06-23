@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Club Dejvice | Indoor golf v Praze 6</title>
+<meta name="description" content="GOLF CLUB DEJVICE – moderní indoor golfové centrum v Praze 6. FULL SWING GOLF simulátory, elektronické drivingy, chipping, putting a restaurace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-dark:#0b3d2e;
+    --green:#155c3f;
+    --green-light:#1f7a52;
+    --gold:#c9a86a;
+    --cream:#f7f4ec;
+    --ink:#16241d;
+    --muted:#5b6b62;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Poppins',sans-serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(11,61,46,0.92);
+    backdrop-filter:blur(6px);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1140px;margin:0 auto;
+  }
+  .logo{color:#fff;font-weight:800;font-size:1.2rem;letter-spacing:.5px;}
+  .logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{color:#eef3ee;font-size:.92rem;font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);color:var(--green-dark);padding:10px 20px;
+    border-radius:30px;font-weight:600;font-size:.9rem;
+  }
+  .nav-toggle{display:none;color:#fff;font-size:1.6rem;cursor:pointer;background:none;border:none;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    background:
+      linear-gradient(135deg, rgba(11,61,46,.88), rgba(11,61,46,.65)),
+      url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1600&auto=format&fit=crop') center/cover;
+    color:#fff;position:relative;
+  }
+  .hero-inner{padding-top:120px;padding-bottom:80px;max-width:680px;}
+  .eyebrow{
+    display:inline-block;color:var(--gold);font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;font-size:.8rem;margin-bottom:18px;
+  }
+  .hero h1{font-size:3.2rem;font-weight:800;line-height:1.12;margin-bottom:20px;}
+  .hero p{font-size:1.15rem;color:#dcebe2;max-width:540px;margin-bottom:34px;}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:15px 30px;border-radius:30px;font-weight:600;
+    font-size:.95rem;transition:transform .2s, box-shadow .2s;
+  }
+  .btn-primary{background:var(--gold);color:var(--green-dark);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,168,106,.4);}
+  .btn-outline{border:1.5px solid rgba(255,255,255,.6);color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,.12);}
+
+  /* SECTION COMMON */
+  section{padding:90px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .section-head .eyebrow{color:var(--green-light);}
+  .section-head h2{font-size:2.2rem;color:var(--green-dark);margin-bottom:14px;}
+  .section-head p{color:var(--muted);}
+
+  /* SERVICES */
+  .services{background:#fff;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .card{
+    background:var(--cream);border-radius:18px;padding:36px 28px;
+    border:1px solid #e9e3d4;transition:transform .25s, box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,61,46,.1);}
+  .card .icon{
+    width:56px;height:56px;border-radius:14px;background:var(--green-dark);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+    font-size:1.6rem;
+  }
+  .card h3{font-size:1.2rem;color:var(--green-dark);margin-bottom:10px;}
+  .card p{color:var(--muted);font-size:.95rem;}
+
+  /* ABOUT */
+  .about{
+    background:var(--green-dark);color:#fff;
+  }
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about h2{font-size:2.1rem;margin-bottom:20px;}
+  .about p{color:#cfe3d8;margin-bottom:16px;}
+  .stat-row{display:flex;gap:36px;margin-top:30px;flex-wrap:wrap;}
+  .stat b{display:block;font-size:1.9rem;color:var(--gold);font-family:'Poppins',sans-serif;}
+  .stat span{font-size:.85rem;color:#bcd3c6;}
+  .about-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);}
+  .about-img img{height:420px;object-fit:cover;width:100%;}
+
+  /* PRICING */
+  .pricing{background:#fff;}
+  table.price{width:100%;border-collapse:collapse;background:var(--cream);border-radius:14px;overflow:hidden;}
+  table.price th,table.price td{padding:16px 20px;text-align:left;font-size:.95rem;}
+  table.price thead{background:var(--green-dark);color:#fff;}
+  table.price tbody tr:nth-child(even){background:#efe9da;}
+  .price-note{margin-top:14px;color:var(--muted);font-size:.88rem;}
+  .pricing-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:start;}
+  .credit-card{
+    background:var(--green-dark);color:#fff;border-radius:18px;padding:30px;
+  }
+  .credit-card h3{color:var(--gold);margin-bottom:14px;font-size:1.15rem;}
+  .credit-card ul{list-style:none;margin-bottom:18px;}
+  .credit-card li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;font-size:.92rem;}
+
+  /* HOURS / CONTACT */
+  .contact{background:var(--cream);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .info-card{
+    background:#fff;border-radius:18px;padding:34px;border:1px solid #e9e3d4;
+  }
+  .info-card h3{color:var(--green-dark);margin-bottom:18px;font-size:1.25rem;}
+  .info-row{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .info-row .dot{
+    width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0;
+  }
+  .info-row b{display:block;color:var(--green-dark);}
+  .hours-table{width:100%;}
+  .hours-table td{padding:8px 0;border-bottom:1px solid #eee2cf;font-size:.95rem;}
+  .hours-table td:last-child{text-align:right;font-weight:600;color:var(--green-dark);}
+
+  /* CTA */
+  .cta{
+    background:linear-gradient(135deg,var(--green-light),var(--green-dark));
+    color:#fff;text-align:center;
+  }
+  .cta h2{font-size:2.1rem;margin-bottom:16px;}
+  .cta p{color:#d8ebe1;max-width:520px;margin:0 auto 30px;}
+
+  footer{background:#0a2a1f;color:#9fc2b0;padding:50px 0 24px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:30px;}
+  footer h4{color:#fff;margin-bottom:14px;font-size:1rem;}
+  footer a{color:#9fc2b0;display:block;margin-bottom:8px;font-size:.9rem;}
+  footer a:hover{color:var(--gold);}
+  .footer-bottom{text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;}
+
+  @media (max-width: 880px){
+    .nav-links, .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+    .hero h1{font-size:2.2rem;}
+    .grid-3{grid-template-columns:1fr;}
+    .about-grid, .pricing-grid, .contact-grid, .footer-grid{grid-template-columns:1fr;}
+    .about-img img{height:280px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">GOLF CLUB <span>DEJVICE</span></a>
+    <div class="nav-links">
+      <a href="#sluzby">Služby</a>
+      <a href="#klub">O klubu</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="tel:+420736222777" class="nav-cta">736 222 777</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <span class="eyebrow">Indoor Golf · Praha 6</span>
+    <h1>Hrajte golf<br>celý rok, bez ohledu na počasí.</h1>
+    <p>GOLF CLUB DEJVICE patří mezi nejmodernější indoor golfová centra v České republice — simulátory, drivingy, chipping a putting pro začátečníky i profesionály.</p>
+    <div class="btn-row">
+      <a href="#cenik" class="btn btn-primary">Zobrazit ceník</a>
+      <a href="#kontakt" class="btn btn-outline">Rezervovat termín</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="sluzby">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Co u nás najdete</span>
+      <h2>Vybavení na profesionální úrovni</h2>
+      <p>Čtyři simulátory Full Swing Golf, pět elektronických drivingů Foresight Sports GC2 a tréninkové plochy pod jednou střechou.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">⛳</div>
+        <h3>Full Swing Golf simulátory</h3>
+        <p>4× simulátory nejvyšší třídy pro realistický zážitek ze hry na světových hřištích za každého počasí.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Elektronické drivingy GC2</h3>
+        <p>5× drivingy Foresight Sports GC2 s přesným měřením odpalů pro zlepšení vaší techniky.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏌️</div>
+        <h3>Chipping &amp; Putting</h3>
+        <p>Zvlněná tréninková plocha pro krátkou hru — chipping a putting pro dospělé i děti.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🍽️</div>
+        <h3>Restaurace</h3>
+        <p>Občerstvení a posezení přímo v areálu klubu — ideální i pro firemní akce a oslavy.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📶</div>
+        <h3>WiFi &amp; Přenosy turnajů</h3>
+        <p>Bezplatné WiFi v celém areálu a živé přenosy golfových turnajů na obrazovkách.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏆</div>
+        <h3>Členství s výhodami</h3>
+        <p>Členové klubu získávají 30% slevu na hru na simulátorech i drivinzích.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="klub">
+  <div class="container about-grid">
+    <div>
+      <span class="eyebrow">O klubu</span>
+      <h2>Nejmodernější indoor v ČR</h2>
+      <p>GOLF CLUB DEJVICE z.s. vznikl s cílem přinést golf blíž lidem — bez ohledu na roční období nebo počasí. Areál v pražských Dejvicích nabízí kompletní zázemí pro trénink i zábavu.</p>
+      <p>Ať jste úplný začátečník, nebo zkušený hráč chystající se na sezónu, najdete u nás odpovídající vybavení i prostor k tréninku.</p>
+      <div class="stat-row">
+        <div class="stat"><b>4</b><span>Full Swing simulátory</span></div>
+        <div class="stat"><b>5</b><span>Elektronické drivingy</span></div>
+        <div class="stat"><b>30%</b><span>sleva pro členy</span></div>
+      </div>
+    </div>
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1592919505780-303950717480?q=80&w=900&auto=format&fit=crop" alt="Indoor golfový simulátor">
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="cenik">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Sezóna 2025/2026</span>
+      <h2>Ceník</h2>
+      <p>Zimní sezóna: 1. 11. – 31. 3. · Po–Pá 8:30–15:00 · So, Ne a svátky zavřeno</p>
+    </div>
+    <div class="pricing-grid">
+      <div>
+        <table class="price">
+          <thead>
+            <tr><th>Služba</th><th>Cena</th><th>Členská sleva 30%</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Simulátor FSG, Po–Pá 8:30–14:00</td><td>480 Kč/hod</td><td>336 Kč/hod</td></tr>
+            <tr><td>Simulátor FSG, Po–Pá 14:00–15:00</td><td>600 Kč/hod</td><td>420 Kč/hod</td></tr>
+            <tr><td>Driving, dospělí (1. hod.)</td><td>360 Kč/os/hod</td><td>252 Kč/os/hod</td></tr>
+            <tr><td>Driving, dospělí (2. hod., -50 %)</td><td>180 Kč/os/hod</td><td>126 Kč/os/hod</td></tr>
+            <tr><td>Driving, děti do 10 let</td><td>100 Kč/os/hod</td><td>—</td></tr>
+            <tr><td>Driving, děti do 18 let</td><td>200 Kč/os/hod</td><td>—</td></tr>
+            <tr><td>Chipping &amp; Putting, dospělí</td><td>120 Kč/os/hod</td><td>—</td></tr>
+            <tr><td>Chipping &amp; Putting, děti do 18 let</td><td>100 Kč/os/hod</td><td>—</td></tr>
+            <tr><td>Chipping &amp; Putting, děti do 10 let</td><td>50 Kč/os/hod</td><td>—</td></tr>
+            <tr><td>Pronájem golfové hole</td><td>50 Kč/ks</td><td>—</td></tr>
+            <tr><td>Skřínka na bag</td><td>200 Kč/měs</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p class="price-note">Ceny platí pro sezónu 2025/2026. Aktuální ceník vždy na recepci nebo telefonicky.</p>
+      </div>
+      <div class="credit-card">
+        <h3>Předplatný kredit</h3>
+        <ul>
+          <li><span>Vklad 2 000 Kč</span><span>Kredit 2 200 Kč</span></li>
+          <li><span>Vklad 5 000 Kč</span><span>Kredit 5 500 Kč</span></li>
+        </ul>
+        <p style="font-size:.88rem;color:#cfe3d8;">Bonus 10 % navíc při dobití kreditu — využijte jej na hru, drivingy i pronájmy.</p>
+        <a href="#kontakt" class="btn btn-primary" style="margin-top:10px;">Mám zájem</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Spojte se s námi</span>
+      <h2>Kontakt &amp; otevírací doba</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="info-card">
+        <h3>Kontaktní údaje</h3>
+        <div class="info-row"><span class="dot"></span><div><b>Adresa</b>Podbabská 81/17, 166 24 Praha 6 (vstup z ulice Pod Paťankou)</div></div>
+        <div class="info-row"><span class="dot"></span><div><b>Telefon</b><a href="tel:+420736222777">736 222 777</a></div></div>
+        <div class="info-row"><span class="dot"></span><div><b>Recepce</b><a href="mailto:recepce@golfdejvice.cz">recepce@golfdejvice.cz</a></div></div>
+        <div class="info-row"><span class="dot"></span><div><b>Info</b><a href="mailto:info@golfdejvice.cz">info@golfdejvice.cz</a></div></div>
+        <div class="info-row"><span class="dot"></span><div><b>Doprava</b>Od Vítězného náměstí směr Suchdol, ulicí Podbabská k plaveckému kanálu.</div></div>
+      </div>
+      <div class="info-card">
+        <h3>Otevírací doba — zimní sezóna</h3>
+        <table class="hours-table">
+          <tr><td>Pondělí – Pátek</td><td>8:30 – 15:00</td></tr>
+          <tr><td>Sobota</td><td>Zavřeno</td></tr>
+          <tr><td>Neděle a svátky</td><td>Zavřeno</td></tr>
+        </table>
+        <p style="margin-top:16px;color:var(--muted);font-size:.88rem;">Zimní sezóna trvá 1. 11. – 31. 3. Sledujte web pro aktuální vánoční otevírací dobu a výjimky.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Připraveni zlepšit svou hru?</h2>
+    <p>Zarezervujte si simulátor nebo driving ještě dnes a přijďte si zahrát golf bez ohledu na počasí.</p>
+    <a href="tel:+420736222777" class="btn btn-primary">Zavolat 736 222 777</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a href="#top" class="logo">GOLF CLUB <span>DEJVICE</span></a>
+      <p style="margin-top:14px;max-width:320px;font-size:.9rem;">Podbabská 81/17, 166 24 Praha 6<br>Nejmodernější indoor golfové centrum v ČR.</p>
+    </div>
+    <div>
+      <h4>Navigace</h4>
+      <a href="#sluzby">Služby</a>
+      <a href="#klub">O klubu</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <a href="tel:+420736222777">736 222 777</a>
+      <a href="mailto:info@golfdejvice.cz">info@golfdejvice.cz</a>
+      <a href="mailto:recepce@golfdejvice.cz">recepce@golfdejvice.cz</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Golf Club Dejvice z.s. · Tento onepager je neoficiální návrh webové prezentace.
+  </div>
+</footer>
+
+</body>
+</html>
